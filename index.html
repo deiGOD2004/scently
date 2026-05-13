@@ -316,9 +316,9 @@
         const WEATHER_API_KEY = 'TU_API_KEY_AQUI'; 
 
         function getRecommendationByTemp(temp) {
-            if(temp < 15) return "❄️ Hace frío. Sugerimos perfumes dulces, amaderados o con cuero (ej. Ombré Leather, 9PM).";
-            if(temp >= 15 && temp < 25) return "⛅ Clima templado. Ideal para maderas suaves, iris o cítricos oscuros (ej. Y EDP, Uomo Intense).";
-            return "☀️ ¡Hace calor, manito! Usa cítricos, acuáticos o frutales para no asfixiar a nadie (ej. Hawas Ice, Profondo).";
+            if(temp < 15) return "❄️ Hace frío. Sugerimos perfumes dulces.";
+            if(temp >= 15 && temp < 25) return "⛅ Clima templado.";
+            return "☀️ ¡Hace calor! Usa cítricos, acuáticos.";
         }
 
         function fetchWeather() {
