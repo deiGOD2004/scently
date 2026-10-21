@@ -1,0 +1,333 @@
+/* ==========================================================================
+   ScentVault — Estilos
+   ========================================================================== */
+
+/* --- Variables de tema --- */
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --card-border: #2c2c2c;
+    --surface: #2c2c2c;
+    --surface-border: #3d3d3d;
+
+    --text-main: #f0f0f0;
+    --text-muted: #a0a0a0;
+    --primary-btn: #bb86fc;
+    --primary-btn-hover: #a361ef;
+    --star: #ffd700;
+
+    --pastel-blue: rgba(162, 210, 255, 0.15);
+    --pastel-blue-text: #a2d2ff;
+    --pastel-pink: rgba(255, 175, 204, 0.15);
+    --pastel-pink-text: #ffafcc;
+    --pastel-purple: rgba(205, 180, 219, 0.15);
+    --pastel-purple-text: #cdb4db;
+}
+
+/* --- Base --- */
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    color: var(--primary-btn);
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-top: 0;
+}
+
+/* --- Banner de clima --- */
+#weather-banner {
+    background: #252525;
+    border: 1px solid var(--primary-btn);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    font-size: 0.9rem;
+}
+
+.highlight { color: var(--primary-btn); }
+
+/* --- Barra de herramientas (buscador y stats) --- */
+.toolbar {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    border: 1px solid var(--surface-border);
+    background: var(--surface);
+    color: white;
+    width: 100%;
+    max-width: 400px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-input:focus { border-color: var(--primary-btn); }
+
+.action-btn {
+    background-color: var(--primary-btn);
+    color: #000;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.action-btn:hover { background-color: var(--primary-btn-hover); }
+
+/* --- Filtros --- */
+.filters-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: var(--surface);
+    border: 1px solid var(--surface-border);
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background-color: var(--primary-btn);
+    color: var(--bg-color);
+    font-weight: bold;
+}
+
+/* --- Catálogo y tarjetas --- */
+#catalog-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.empty-msg {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.fragrance-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
+}
+
+.fragrance-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-btn);
+}
+
+.card-media { position: relative; }
+
+.fav-marker {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+}
+
+.fragrance-image {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    opacity: 0.9;
+}
+
+.card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 0.85rem;
+    color: var(--primary-btn);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+
+.fragrance-name {
+    font-size: 1.4rem;
+    margin: 0 0 1rem 0;
+}
+
+/* --- Etiquetas de notas --- */
+.note-badge {
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    display: inline-block;
+    margin: 0.2rem;
+}
+
+.top-note   { background-color: var(--pastel-blue);   color: var(--pastel-blue-text); }
+.heart-note { background-color: var(--pastel-pink);   color: var(--pastel-pink-text); }
+.base-note  { background-color: var(--pastel-purple); color: var(--pastel-purple-text); }
+
+/* --- Modales --- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    width: 90%;
+    max-width: 900px;
+    border-radius: 16px;
+    border: 1px solid var(--primary-btn);
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    max-height: 90vh;
+}
+
+.modal-content.column { flex-direction: column; }
+
+.modal-body {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 1;
+}
+
+.modal-media {
+    flex: 1;
+    background: #000;
+    display: flex;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-info {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.score { color: var(--star); }
+
+.review-text {
+    margin-top: 1.5rem;
+    font-style: italic;
+    color: #ccc;
+}
+
+.buy-btn,
+.fav-btn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.buy-btn {
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    margin: 1rem 0;
+    border: 1px solid #444;
+}
+
+.fav-btn {
+    background-color: var(--primary-btn);
+    color: #000;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+/* --- Dashboard de estadísticas --- */
+.stats-container {
+    padding: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.stats-container p.muted { color: var(--text-muted); }
+
+.chart-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#stats-msg { margin-top: 2rem; }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    body { padding: 1rem; }
+    .modal-content { flex-direction: column; overflow-y: auto; }
+    .modal-media { min-height: 300px; }
+}
